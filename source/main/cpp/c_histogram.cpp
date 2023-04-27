@@ -1,6 +1,12 @@
 #include "cbase/c_target.h"
+#include "cbase/c_integer.h"
 #include "cbase/c_limits.h"
+#include "cbase/c_memory.h"
+//#include "cfile/c_file.h"
+
 #include "chistogram/c_histogram.h"
+
+#include <math.h>
 
 namespace ncore
 {
@@ -9,6 +15,15 @@ namespace ncore
         const s32 EINVAL = -1;
         const s32 ENOMEM = -2;
         const s32 EIO = -3;
+
+        void* hdr_calloc(s32 count, s32 size)
+        {
+            return nullptr;
+        }
+
+        void hdr_free(void* ptr)
+        {
+        }
 
         /**
          * hdr_histogram.c
