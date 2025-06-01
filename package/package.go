@@ -15,22 +15,22 @@ func GetPackage() *denv.Package {
 	cbasepkg := cbase.GetPackage()
 
 	// The main (chistogram) package
-	mainpkg := denv.NewPackage("chistogram")
+	mainpkg := denv.NewPackage("github.com\\jurgen-kluft", "chistogram")
 	mainpkg.AddPackage(cunittestpkg)
 	mainpkg.AddPackage(cfilepkg)
 	mainpkg.AddPackage(cbasepkg)
 
 	// 'chistogram' library
-	mainlib := denv.SetupCppLibProject("chistogram", "github.com\\jurgen-kluft\\chistogram")
+	mainlib := denv.SetupCppLibProject(mainpkg, "chistogram")
 	mainlib.AddDependencies(cfilepkg.GetMainLib()...)
 	mainlib.AddDependencies(cbasepkg.GetMainLib()...)
 
 	// 'chistogram' unittest project
-	maintest := denv.SetupDefaultCppTestProject("chistogram_test", "github.com\\jurgen-kluft\\chistogram")
+	maintest := denv.SetupCppTestProject(mainpkg, "chistogram_test")
 	maintest.AddDependencies(cunittestpkg.GetMainLib()...)
 	maintest.AddDependencies(cfilepkg.GetMainLib()...)
 	maintest.AddDependencies(cbasepkg.GetMainLib()...)
-	maintest.Dependencies = append(maintest.Dependencies, mainlib)
+	maintest.AddDependency(mainlib)
 
 	mainpkg.AddMainLib(mainlib)
 	mainpkg.AddUnittest(maintest)
