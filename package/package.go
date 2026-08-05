@@ -2,9 +2,9 @@ package chistogram
 
 import (
 	cbase "github.com/jurgen-kluft/cbase/package"
-	"github.com/jurgen-kluft/ccode/denv"
 	cfile "github.com/jurgen-kluft/cfile/package"
 	cunittest "github.com/jurgen-kluft/cunittest/package"
+	"github.com/jurgen-kluft/go-ide/denv"
 )
 
 const (
